@@ -18,7 +18,7 @@ def draw_plot():
     years_2000_to_2050 = np.arange(2000, 2051)
 
     # Creating the plot(s)
-    reg = stats.linregress(x, y)
+    reg = linregress(x, y)
     predicted_sea_levels = reg.intercept + reg.slope * years_extended
 
     markersize = 100
@@ -28,7 +28,7 @@ def draw_plot():
 
     newx = df_scatter[df_scatter['Year'] >= 2000]['Year']
     newy = df_scatter[df_scatter['Year'] >= 2000]['CSIRO Adjusted Sea Level']
-    newreg = stats.linregress(newx, newy)
+    newreg = linregress(newx, newy)
     new_predict = newreg.intercept + newreg.slope * years_2000_to_2050
 
     plt.plot(years_2000_to_2050, new_predict, 'g', label= "2000's Data with Future Predictions")
